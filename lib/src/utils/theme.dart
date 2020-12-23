@@ -3,8 +3,7 @@ import 'package:food/src/utils/colors.dart';
 
 ThemeData theme() {
   return ThemeData(
-    fontFamily: 'NunitoSans',
-    scaffoldBackgroundColor: kWhiteColor,
+    fontFamily: 'Montserrat',
     appBarTheme: appBarTheme(),
     textTheme: textTheme(),
     inputDecorationTheme: inputDecorationTheme(),
@@ -14,7 +13,14 @@ ThemeData theme() {
 
 InputDecorationTheme inputDecorationTheme() {
   return InputDecorationTheme(
-    border: InputBorder.none,
+    labelStyle: TextStyle(color: kBlackColor),
+    contentPadding: EdgeInsets.only(top: 5),
+    enabledBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: Colors.grey[200]),
+    ),
+    focusedBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: Colors.grey[200]),
+    ),
   );
 }
 

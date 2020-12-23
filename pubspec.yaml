@@ -69,14 +69,16 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: NunitoSans
+    - family: Montserrat
       fonts:
-        - asset: assets/fonts/NunitoSans-Regular.ttf
+        - asset: assets/fonts/Montserrat/Montserrat-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Montserrat/Montserrat-Regular.ttf
           weight: 400
-        - asset: assets/fonts/NunitoSans-Bold.ttf    
+        - asset: assets/fonts/Montserrat/Montserrat-Bold.ttf    
           weight: 700 
-        - asset: assets/fonts/NunitoSans-Bold.ttf    
-          weight: 600       
+        - asset: assets/fonts/Montserrat/Montserrat-SemiBold.ttf    
+          weight: 900       
         
   #   - family: Trajan Pro
   #     fonts:

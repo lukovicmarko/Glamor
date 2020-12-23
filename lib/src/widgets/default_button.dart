@@ -21,8 +21,8 @@ class DefaultButton extends StatelessWidget {
           text,
           style: TextStyle(
             color: kWhiteColor,
-            fontWeight: FontWeight.w800,
-            fontSize: getProportionateScreenWidth(15),
+            fontWeight: FontWeight.w700,
+            fontSize: getProportionateScreenWidth(14),
           ),
         ),
       ),

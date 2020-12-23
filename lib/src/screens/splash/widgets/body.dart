@@ -89,7 +89,10 @@ class _BodyState extends State<Body> {
                     child: currentPage == 2
                         ? DefaultButton(
                             text: 'Get Started',
-                            onPress: () {},
+                            onPress: () {
+                              Navigator.pushNamed(
+                                  context, SignInScreen.routeName);
+                            },
                           )
                         : Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
