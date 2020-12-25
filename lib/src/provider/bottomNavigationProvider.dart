@@ -10,7 +10,6 @@ class BottomNavigationBarProvider with ChangeNotifier {
 
   final tabs = [
     HomePage(),
-    ProductsPage(),
     CartPage(),
     FavoritesPage(),
     ProfilePage(),

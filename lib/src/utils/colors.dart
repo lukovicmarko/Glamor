@@ -6,3 +6,4 @@ Color kLightGrey = Colors.grey.withOpacity(0.2);
 Color kWhiteColor = Color(0xFFFFFFFF);
 Color kRedColor = Color(0xFFF77866);
 Color kYellowColor = Color(0xFFF7B733);
+Color kBackgroundColor = Color(0xFFFAFAFA);

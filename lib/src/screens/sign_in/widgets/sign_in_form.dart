@@ -54,7 +54,21 @@ class _SignFormState extends State<SignForm> {
               SizedBox(height: 50),
               DefaultButton(
                 text: "Sign In",
-                onPress: () {},
+                onPress: () async {
+                  // spinner.isActiveSpiner();
+
+                  // await provider.login(email, password);
+
+                  // if (provider.userInfo["message"] != null) {
+                  //   spinner.isInActiveSpiner();
+                  //   setState(() {
+                  //     message = provider.userInfo["message"];
+                  //   });
+                  // } else {
+                  //   spinner.isInActiveSpiner();
+                  Navigator.pushNamed(context, MainScreen.routeName);
+                  // }
+                },
               ),
               SizedBox(height: 20),
               Text('-OR-'),
@@ -95,21 +109,21 @@ class _SignFormState extends State<SignForm> {
       // child: DefaultButton(
       //   text: "LOGIN",
       //   borderRadius: 15.0,
-      //   onPress: () async {
-      //     spinner.isActiveSpiner();
+      // onPress: () async {
+      //   spinner.isActiveSpiner();
 
-      //     await provider.login(email, password);
+      //   await provider.login(email, password);
 
-      //     if (provider.userInfo["message"] != null) {
-      //       spinner.isInActiveSpiner();
-      //       setState(() {
-      //         message = provider.userInfo["message"];
-      //       });
-      //     } else {
-      //       spinner.isInActiveSpiner();
-      //       Navigator.pushNamed(context, MainScreen.routeName);
-      //     }
-      //   },
+      //   if (provider.userInfo["message"] != null) {
+      //     spinner.isInActiveSpiner();
+      //     setState(() {
+      //       message = provider.userInfo["message"];
+      //     });
+      //   } else {
+      //     spinner.isInActiveSpiner();
+      //     Navigator.pushNamed(context, MainScreen.routeName);
+      //   }
+      // },
       // ),
       //   ),
       //   SizedBox(
