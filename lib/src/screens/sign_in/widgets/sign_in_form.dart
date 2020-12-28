@@ -5,9 +5,11 @@ import 'package:food/src/provider/spinner.dart';
 import 'package:food/src/screens/sign_in/widgets/social_button.dart';
 import 'package:food/src/screens/sign_up/sign_up_screen.dart';
 import 'package:food/src/utils/colors.dart';
+import 'package:food/src/utils/constants.dart';
 import 'package:food/src/utils/size_config.dart';
 import 'package:food/src/widgets/auth_container.dart';
 import 'package:food/src/widgets/default_button.dart';
+import 'package:food/src/widgets/form_error.dart';
 import 'package:provider/provider.dart';
 import '../../main/main_screen.dart';
 
@@ -23,9 +25,25 @@ class _SignFormState extends State<SignForm> {
   String message;
   bool _isPasswordVisible = false;
 
+  final List<String> errors = [];
+
+  void addError({String error}) {
+    if (!errors.contains(error))
+      setState(() {
+        errors.add(error);
+      });
+  }
+
+  void removeError({String error}) {
+    if (errors.contains(error))
+      setState(() {
+        errors.remove(error);
+      });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<AuthData>(context);
+    final authData = Provider.of<AuthData>(context);
     var spinner = Provider.of<Spinner>(context);
     return AuthContainer(
       child: Form(
@@ -51,22 +69,34 @@ class _SignFormState extends State<SignForm> {
                   ),
                 ],
               ),
+              SizedBox(height: 10),
+              FormError(errors: errors),
               SizedBox(height: 50),
               DefaultButton(
                 text: "Sign In",
                 onPress: () async {
                   // spinner.isActiveSpiner();
 
-                  // await provider.login(email, password);
+                  authData.login(email, password);
 
-                  // if (provider.userInfo["message"] != null) {
-                  //   spinner.isInActiveSpiner();
-                  //   setState(() {
-                  //     message = provider.userInfo["message"];
-                  //   });
-                  // } else {
-                  //   spinner.isInActiveSpiner();
                   Navigator.pushNamed(context, MainScreen.routeName);
+
+                  // if (authData.userInfo["message"] != null) {
+                  //   addError(error: authData.userInfo["message"]);
+                  //   //   spinner.isInActiveSpiner();
+                  //   //   setState(() {
+                  //   //     message = provider.userInfo["message"];
+                  //   //   });
+                  //   // } else {
+                  //   //   spinner.isInActiveSpiner();
+                  //   //Navigator.pushNamed(context, MainScreen.routeName);
+                  // } else {
+                  //   if (authData.userInfo["token"] != null) {
+                  //     // spinner.isActiveSpiner();
+                  //     Navigator.pushNamed(context, MainScreen.routeName);
+                  //     spinner.isInActiveSpiner();
+                  //   }
+                  //   //
                   // }
                 },
               ),
@@ -84,7 +114,14 @@ class _SignFormState extends State<SignForm> {
                   SocialButton(
                     text: "Google",
                     image: "assets/icons/google.svg",
-                    onPress: () {},
+                    onPress: () {
+                      authData.loginWithGoogle();
+                      //print(authData.googleSignIn.currentUser.displayName);
+                      // login();
+                      if (authData.isLogged) {
+                        Navigator.pushNamed(context, MainScreen.routeName);
+                      }
+                    },
                   ),
                 ],
               ),
@@ -92,114 +129,35 @@ class _SignFormState extends State<SignForm> {
           ),
         ),
       ),
-      //   key: _formKey,
-      //   child: Column(
-      //     children: [
-      // TextFieldContainer(
-      //   child: buildEmailFormField(),
-      // ),
-      // SizedBox(height: getProportionateScreenHeight(35)),
-      // TextFieldContainer(
-      //   child: buildPasswordFormField(),
-      // ),
-      // SizedBox(height: getProportionateScreenHeight(45)),
-      // SizedBox(
-      //   width: double.infinity,
-      //   height: getProportionateScreenHeight(70),
-      // child: DefaultButton(
-      //   text: "LOGIN",
-      //   borderRadius: 15.0,
-      // onPress: () async {
-      //   spinner.isActiveSpiner();
-
-      //   await provider.login(email, password);
-
-      //   if (provider.userInfo["message"] != null) {
-      //     spinner.isInActiveSpiner();
-      //     setState(() {
-      //       message = provider.userInfo["message"];
-      //     });
-      //   } else {
-      //     spinner.isInActiveSpiner();
-      //     Navigator.pushNamed(context, MainScreen.routeName);
-      //   }
-      // },
-      // ),
-      //   ),
-      //   SizedBox(
-      //     height: getProportionateScreenHeight(20),
-      //   ),
-      //   message != null
-      //       ? Text(
-      //           message,
-      //           style: TextStyle(
-      //             color: Colors.red,
-      //             fontSize: getProportionateScreenWidth(17),
-      //           ),
-      //         )
-      //       : Container(),
-      //   SizedBox(
-      //     height: getProportionateScreenHeight(20),
-      //   ),
-      //   Row(
-      //     mainAxisAlignment: MainAxisAlignment.center,
-      //     children: [
-      //       Container(
-      //         width: getProportionateScreenWidth(100.0),
-      //         height: 1.0,
-      //         // color: kTextColor,
-      //       ),
-      //       Padding(
-      //         padding: EdgeInsets.symmetric(horizontal: 10.0),
-      //         child: Text('Or Sign in with'),
-      //       ),
-      //       Container(
-      //         width: getProportionateScreenWidth(100.0),
-      //         height: 1.0,
-      //         // color: kTextColor,
-      //       ),
-      //     ],
-      //   ),
-      //   SizedBox(
-      //     height: getProportionateScreenHeight(40),
-      //   ),
-      //   Row(
-      //     mainAxisAlignment: MainAxisAlignment.center,
-      //     children: [
-      //       SocialButton(image: "assets/icons/facebook.svg"),
-      //       SizedBox(width: getProportionateScreenWidth(50.0)),
-      //       SocialButton(image: "assets/icons/google.svg"),
-      //     ],
-      //   ),
-      //   SizedBox(height: getProportionateScreenHeight(30)),
-      //   Row(
-      //     mainAxisAlignment: MainAxisAlignment.center,
-      //     children: [
-      //       Text(
-      //         "Don't have an account?",
-      //         style: TextStyle(
-      //           fontSize: getProportionateScreenWidth(16),
-      //         ),
-      //       ),
-      //       SizedBox(width: getProportionateScreenWidth(5)),
-      //       // AuthLink(
-      //       //   text: "SIGN UP",
-      //       //   onPress: () {
-      //       //     Navigator.pushNamed(context, SignUpScreen.routeName);
-      //       //   },
-      //       // ),
-      //     ],
-      //   ),
-      //     ],
-      //   ),
-      // ),
     );
   }
 
   TextFormField buildPasswordField() {
     return TextFormField(
       obscureText: _isPasswordVisible,
+      onSaved: (newValue) => password = newValue,
       keyboardType: TextInputType.visiblePassword,
+      onChanged: (value) {
+        setState(() {
+          password = value;
+        });
+        // if (value.isNotEmpty) {
+        //   removeError(error: kPassNullError);
+        // } else if (value.length >= 6) {
+        //   removeError(error: kShortPassError);
+        // }
+        // return null;
+      },
+      validator: (value) {
+        // if (value.isEmpty) {
+        //   addError(error: kPassNullError);
+        //   return "";
+        // } else if (value.length < 6) {
+        //   addError(error: kShortPassError);
+        //   return "";
+        // }
+        // return null;
+      },
       decoration: InputDecoration(
         labelText: 'Password',
         suffixIcon: GestureDetector(
@@ -223,6 +181,28 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField buildEmailField() {
     return TextFormField(
+      onSaved: (newValue) => email = newValue,
+      onChanged: (value) {
+        setState(() {
+          email = value;
+        });
+        // if (value.isNotEmpty) {
+        //   removeError(error: kEmailNullError);
+        // } else if (emailValidatorRegExp.hasMatch(value)) {
+        //   removeError(error: kInvalidEmailError);
+        // }
+        // return null;
+      },
+      validator: (value) {
+        // if (value.isEmpty) {
+        //   addError(error: kEmailNullError);
+        //   return "";
+        // } else if (!emailValidatorRegExp.hasMatch(value)) {
+        //   addError(error: kInvalidEmailError);
+        //   return "";
+        // }
+        // return null;
+      },
       keyboardType: TextInputType.emailAddress,
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(

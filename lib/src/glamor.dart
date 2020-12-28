@@ -5,6 +5,7 @@ import 'package:food/src/provider/spinner.dart';
 import 'package:food/src/screens/splash/splash_screen.dart';
 import 'package:food/src/utils/routes.dart';
 import 'package:food/src/utils/theme.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:provider/provider.dart';
 import 'data/auth_data.dart';
 import 'data/banners_data.dart';

@@ -18,7 +18,6 @@ class AuthParrent extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: SizeConfig.screenHeight * 0.12),
             Text(
               title,
               style: TextStyle(

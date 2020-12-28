@@ -10,7 +10,11 @@ class SignInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ModalProgressHUD(
-        child: Body(),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Body(),
+          ),
+        ),
         inAsyncCall: Provider.of<Spinner>(context).showSpinner,
       ),
     );

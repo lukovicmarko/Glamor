@@ -16,7 +16,7 @@ class ProductsData extends ChangeNotifier {
   Future getProducts() async {
     RequestResult requestResult =
         //RequestResult('https://proshop1986.herokuapp.com/api/products');
-        RequestResult('$apiUrl/api/products');
+        RequestResult('http://192.168.0.37:5000/api/products');
 
     //'http://192.168.12.241:8095/products/all');
 
