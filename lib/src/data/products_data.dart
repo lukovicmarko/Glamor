@@ -15,8 +15,7 @@ class ProductsData extends ChangeNotifier {
 
   Future getProducts() async {
     RequestResult requestResult =
-        //RequestResult('https://proshop1986.herokuapp.com/api/products');
-        RequestResult('http://192.168.0.37:5000/api/products');
+        RequestResult('https://lukovicmarko-glamor.herokuapp.com/api/products');
 
     //'http://192.168.12.241:8095/products/all');
 
@@ -45,9 +44,8 @@ class ProductsData extends ChangeNotifier {
   get products => _products;
 
   Future getTopProducts() async {
-    RequestResult requestResult =
-        //RequestResult('https://proshop1986.herokuapp.com/api/products/top');
-        RequestResult('http://192.168.0.37:5000/api/products/top');
+    RequestResult requestResult = RequestResult(
+        'https://lukovicmarko-glamor.herokuapp.com/api/products/top');
     var productsResponse = await requestResult.getData();
 
     productsResponse.forEach((product) {

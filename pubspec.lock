@@ -91,12 +91,12 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_config:
-    dependency: "direct main"
+    dependency: "direct dev"
     description:
       name: flutter_config
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.7"
+    version: "1.0.8"
   flutter_svg:
     dependency: "direct main"
     description:

@@ -21,7 +21,8 @@ class AuthData extends ChangeNotifier {
   Future login(email, password) async {
     RequestResult requestResult =
         //RequestResult('https://proshop1986.herokuapp.com/api/users/login');
-        RequestResult('http://192.168.0.37:5000/api/users/login');
+        RequestResult(
+            'https://lukovicmarko-glamor.herokuapp.com/api/users/login');
 
     var signInResponse = await requestResult.sendData({
       "email": email,

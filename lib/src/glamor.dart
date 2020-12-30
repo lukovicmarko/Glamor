@@ -9,10 +9,12 @@ import 'package:localstorage/localstorage.dart';
 import 'package:provider/provider.dart';
 import 'data/auth_data.dart';
 import 'data/banners_data.dart';
+import 'package:flutter_config/flutter_config.dart';
 
 class Glamor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    FlutterConfig.get('API_URL');
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
