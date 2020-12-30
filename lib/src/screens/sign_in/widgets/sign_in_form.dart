@@ -58,6 +58,15 @@ class _SignFormState extends State<SignForm> {
     }
   }
 
+  signInWithGoogle() async {
+    final navigation = Provider.of<BottomNavigationBarProvider>(context);
+    await authData.loginWithGoogle();
+    if (authData.isLogged) {
+      Navigator.pushNamed(context, MainScreen.routeName);
+      navigation.currentIndex = 0;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return AuthContainer(
@@ -108,12 +117,7 @@ class _SignFormState extends State<SignForm> {
                     text: "Google",
                     image: "assets/icons/google.svg",
                     onPress: () {
-                      authData.loginWithGoogle();
-                      //print(authData.googleSignIn.currentUser.displayName);
-                      // login();
-                      if (authData.isLogged) {
-                        Navigator.pushNamed(context, MainScreen.routeName);
-                      }
+                      signInWithGoogle();
                     },
                   ),
                 ],

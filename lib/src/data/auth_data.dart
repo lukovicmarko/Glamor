@@ -49,7 +49,7 @@ class AuthData extends ChangeNotifier {
     notifyListeners();
   }
 
-  void loginWithGoogle() async {
+  loginWithGoogle() async {
     try {
       await _googleSignIn.signIn();
 
@@ -65,7 +65,7 @@ class AuthData extends ChangeNotifier {
     }
   }
 
-  void logoutWithGoogle() async {
+  logoutWithGoogle() async {
     try {
       await _googleSignIn.signOut();
 
