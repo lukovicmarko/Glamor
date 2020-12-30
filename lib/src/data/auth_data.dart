@@ -39,8 +39,7 @@ class AuthData extends ChangeNotifier {
       _isLogged = true;
 
       //save to localstorage
-      final token = json.encode(_user);
-      storage.setItem('token', token);
+      saveLocalStorage(signInResponse["token"]);
     } else {
       _message = signInResponse["message"];
       _isLogged = false;
@@ -59,8 +58,8 @@ class AuthData extends ChangeNotifier {
       final accessToken = response.accessToken;
 
       //save to localstorage
-      final googleToken = json.encode(accessToken);
-      storage.setItem('googleToken', googleToken);
+
+      storage.setItem('token', accessToken);
 
       notifyListeners();
     } catch (e) {
@@ -74,10 +73,24 @@ class AuthData extends ChangeNotifier {
 
       _isLogged = false;
 
+      storage.deleteItem('token');
+
       notifyListeners();
     } catch (e) {
       print(e);
     }
+  }
+
+  saveLocalStorage(accessToken) {
+    storage.setItem('token', accessToken);
+  }
+
+  getLocalStorage() async {
+    await storage.ready;
+
+    final token = storage.getItem("token");
+
+    return token;
   }
 
   get message => _message;
