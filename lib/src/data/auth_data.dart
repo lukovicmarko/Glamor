@@ -51,13 +51,16 @@ class AuthData extends ChangeNotifier {
 
   loginWithGoogle() async {
     try {
-      await _googleSignIn.signIn();
+      final googleResponse = await _googleSignIn.signIn();
 
       _isLogged = true;
 
+      final response = await googleResponse.authentication;
+      final accessToken = response.accessToken;
+
       //save to localstorage
-      final googleInfo = json.encode(_googleSignIn.currentUser);
-      storage.setItem('googleInfo', googleInfo);
+      final googleToken = json.encode(accessToken);
+      storage.setItem('googleToken', googleToken);
 
       notifyListeners();
     } catch (e) {
