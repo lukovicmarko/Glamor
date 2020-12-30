@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food/src/data/auth_data.dart';
+import 'package:food/src/provider/bottomNavigationProvider.dart';
 import 'package:food/src/provider/spinner.dart';
 import 'package:food/src/screens/sign_in/widgets/social_button.dart';
-import 'package:food/src/screens/sign_up/sign_up_screen.dart';
-import 'package:food/src/utils/colors.dart';
-import 'package:food/src/utils/constants.dart';
 import 'package:food/src/utils/size_config.dart';
 import 'package:food/src/widgets/auth_container.dart';
 import 'package:food/src/widgets/default_button.dart';
@@ -19,7 +17,9 @@ class SignForm extends StatefulWidget {
 }
 
 class _SignFormState extends State<SignForm> {
+  final authData = new AuthData();
   final _formKey = GlobalKey<FormState>();
+
   String email;
   String password;
   String message;
@@ -41,10 +41,25 @@ class _SignFormState extends State<SignForm> {
       });
   }
 
+  signIn() async {
+    final spinner = Provider.of<Spinner>(context);
+    final navigation = Provider.of<BottomNavigationBarProvider>(context);
+    spinner.isActiveSpiner();
+
+    await authData.login(email, password);
+
+    if (authData.isLogged) {
+      Navigator.pushNamed(context, MainScreen.routeName);
+      spinner.isInActiveSpiner();
+      navigation.currentIndex = 0;
+    } else {
+      spinner.isInActiveSpiner();
+      addError(error: authData.message);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final authData = Provider.of<AuthData>(context);
-    var spinner = Provider.of<Spinner>(context);
     return AuthContainer(
       child: Form(
         key: _formKey,
@@ -74,30 +89,8 @@ class _SignFormState extends State<SignForm> {
               SizedBox(height: 50),
               DefaultButton(
                 text: "Sign In",
-                onPress: () async {
-                  // spinner.isActiveSpiner();
-
-                  authData.login(email, password);
-
-                  Navigator.pushNamed(context, MainScreen.routeName);
-
-                  // if (authData.userInfo["message"] != null) {
-                  //   addError(error: authData.userInfo["message"]);
-                  //   //   spinner.isInActiveSpiner();
-                  //   //   setState(() {
-                  //   //     message = provider.userInfo["message"];
-                  //   //   });
-                  //   // } else {
-                  //   //   spinner.isInActiveSpiner();
-                  //   //Navigator.pushNamed(context, MainScreen.routeName);
-                  // } else {
-                  //   if (authData.userInfo["token"] != null) {
-                  //     // spinner.isActiveSpiner();
-                  //     Navigator.pushNamed(context, MainScreen.routeName);
-                  //     spinner.isInActiveSpiner();
-                  //   }
-                  //   //
-                  // }
+                onPress: () {
+                  signIn();
                 },
               ),
               SizedBox(height: 20),

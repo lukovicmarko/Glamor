@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food/src/models/User.dart';
 import 'package:food/src/modules/http.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:flutter_config/flutter_config.dart';
@@ -16,25 +17,34 @@ class AuthData extends ChangeNotifier {
   final LocalStorage storage = new LocalStorage('localstorage_app');
 
   bool _isLogged = false;
-  var _userInfo;
+  String _message;
+  User _user;
 
   Future login(email, password) async {
-    RequestResult requestResult =
-        //RequestResult('https://proshop1986.herokuapp.com/api/users/login');
-        RequestResult(
-            'https://lukovicmarko-glamor.herokuapp.com/api/users/login');
+    RequestResult requestResult = RequestResult(
+        'https://lukovicmarko-glamor.herokuapp.com/api/users/login');
 
-    var signInResponse = await requestResult.sendData({
+    final signInResponse = await requestResult.sendData({
       "email": email,
       "password": password,
     });
 
-    //print(signInResponse);
-    _userInfo = signInResponse;
+    if (signInResponse["message"] == null) {
+      _user = new User(
+        id: signInResponse["_id"],
+        name: signInResponse["name"],
+        email: signInResponse["email"],
+      );
 
-    //save to localstorage
-    final info = json.encode(_userInfo);
-    storage.setItem('info', info);
+      _isLogged = true;
+
+      //save to localstorage
+      final token = json.encode(_user);
+      storage.setItem('token', token);
+    } else {
+      _message = signInResponse["message"];
+      _isLogged = false;
+    }
 
     notifyListeners();
   }
@@ -67,7 +77,8 @@ class AuthData extends ChangeNotifier {
     }
   }
 
-  get userInfo => _userInfo;
+  get message => _message;
+  get user => _user;
   get isLogged => _isLogged;
   get googleSignIn => _googleSignIn;
 }
