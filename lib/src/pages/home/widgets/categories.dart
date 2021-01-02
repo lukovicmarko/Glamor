@@ -18,7 +18,7 @@ class _CategoriesState extends State<Categories> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: kDefaultPadding),
+      margin: EdgeInsets.symmetric(vertical: kDefaultPadding / 2),
       height: getProportionateScreenHeight(100),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -58,8 +58,9 @@ class _CategoriesState extends State<Categories> {
                 Text(
                   _categories[index].name,
                   style: TextStyle(
-                    fontSize: getProportionateScreenWidth(15),
-                  ),
+                      fontSize: getProportionateScreenWidth(15),
+                      color: kGreyColor,
+                      fontWeight: FontWeight.w500),
                 )
               ],
             ),

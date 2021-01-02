@@ -19,7 +19,7 @@ class ProductsData extends ChangeNotifier {
 
     //'http://192.168.12.241:8095/products/all');
 
-    var productsResponse = await requestResult.getData();
+    final productsResponse = await requestResult.getData();
 
     productsResponse["products"].forEach((product) {
       _products.add(

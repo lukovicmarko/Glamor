@@ -11,6 +11,7 @@ class SearchBar extends StatelessWidget {
         fontSize: getProportionateScreenWidth(15),
       ),
       decoration: InputDecoration(
+        hintText: "Search Products",
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(color: kGreyColor, width: 1.0),
