@@ -93,6 +93,35 @@ class AuthData extends ChangeNotifier {
     return token;
   }
 
+  Future register(name, email, password) async {
+    RequestResult requestResult =
+        RequestResult('https://lukovicmarko-glamor.herokuapp.com/api/users');
+
+    final signUpResponse = await requestResult.sendData({
+      "name": name,
+      "email": email,
+      "password": password,
+    });
+
+    if (signUpResponse["message"] == null) {
+      _user = new User(
+        id: signUpResponse["_id"],
+        name: signUpResponse["name"],
+        email: signUpResponse["email"],
+      );
+
+      _isLogged = true;
+
+      //save to localstorage
+      saveLocalStorage(signUpResponse["token"]);
+    } else {
+      _message = signUpResponse["message"];
+      _isLogged = false;
+    }
+
+    notifyListeners();
+  }
+
   get message => _message;
   get user => _user;
   get isLogged => _isLogged;

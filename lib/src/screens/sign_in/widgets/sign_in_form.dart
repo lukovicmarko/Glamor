@@ -4,8 +4,11 @@ import 'package:food/src/data/auth_data.dart';
 import 'package:food/src/provider/bottomNavigationProvider.dart';
 import 'package:food/src/provider/spinner.dart';
 import 'package:food/src/screens/sign_in/widgets/social_button.dart';
+import 'package:food/src/screens/sign_up/sign_up_screen.dart';
+import 'package:food/src/utils/colors.dart';
 import 'package:food/src/utils/size_config.dart';
 import 'package:food/src/widgets/auth_container.dart';
+import 'package:food/src/widgets/auth_link.dart';
 import 'package:food/src/widgets/default_button.dart';
 import 'package:food/src/widgets/form_error.dart';
 import 'package:provider/provider.dart';
@@ -95,7 +98,7 @@ class _SignFormState extends State<SignForm> {
               ),
               SizedBox(height: 10),
               FormError(errors: errors),
-              SizedBox(height: 50),
+              SizedBox(height: 25),
               DefaultButton(
                 text: "Sign In",
                 onPress: () {
@@ -103,6 +106,14 @@ class _SignFormState extends State<SignForm> {
                 },
               ),
               SizedBox(height: 20),
+              AuthLink(
+                text: "Don't have an account?",
+                linkText: "Sign Up",
+                onPress: () {
+                  Navigator.pushNamed(context, SignUpScreen.routeName);
+                },
+              ),
+              SizedBox(height: 10),
               Text('-OR-'),
               SizedBox(height: 20),
               Row(
