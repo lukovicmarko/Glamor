@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:food/src/data/categories_data.dart';
 import 'package:food/src/models/Category.dart';
 import 'package:food/src/utils/colors.dart';
@@ -18,7 +19,7 @@ class _CategoriesState extends State<Categories> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: kDefaultPadding),
-      height: getProportionateScreenHeight(33),
+      height: getProportionateScreenHeight(100),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: categories.length,
@@ -28,23 +29,39 @@ class _CategoriesState extends State<Categories> {
               selectedIndex = index;
             });
           },
-          child: AnimatedContainer(
-            duration: kAnimationDuration,
-            alignment: Alignment.center,
-            margin: EdgeInsets.only(
-              right: kDefaultPadding,
-            ),
-            padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
-            decoration: BoxDecoration(
-              // color: index == selectedIndex ? kOrangeColor : Colors.transparent,
-              borderRadius: BorderRadius.circular(50.0),
-            ),
-            child: Text(
-              _categories[index].name,
-              style: TextStyle(
-                color: index == selectedIndex ? kWhiteColor : kGreyColor,
-                fontSize: getProportionateScreenWidth(15),
-              ),
+          child: Container(
+            margin: EdgeInsets.only(right: getProportionateScreenWidth(30)),
+            child: Column(
+              children: [
+                Container(
+                  width: getProportionateScreenWidth(46),
+                  height: getProportionateScreenHeight(58),
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: _categories[index].color,
+                      ),
+                      borderRadius: BorderRadius.circular(18)),
+                  child: Opacity(
+                    opacity: .9,
+                    child: SvgPicture.asset(
+                      categories[index].image,
+                      color: kWhiteColor,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: getProportionateScreenHeight(10),
+                ),
+                Text(
+                  _categories[index].name,
+                  style: TextStyle(
+                    fontSize: getProportionateScreenWidth(15),
+                  ),
+                )
+              ],
             ),
           ),
         ),

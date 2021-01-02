@@ -15,6 +15,10 @@ class SearchBar extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(color: kGreyColor, width: 1.0),
         ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: kGreyColor, width: 1.0),
+        ),
         prefixIcon: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
           child: SvgPicture.asset(

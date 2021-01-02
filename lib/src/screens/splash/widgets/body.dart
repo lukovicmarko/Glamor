@@ -4,6 +4,7 @@ import 'package:food/src/screens/splash/widgets/splash_content.dart';
 import 'package:food/src/utils/colors.dart';
 import 'package:food/src/utils/constants.dart';
 import 'package:food/src/utils/size_config.dart';
+import 'package:food/src/widgets/build_dots.dart';
 import 'package:food/src/widgets/default_button.dart';
 import 'package:localstorage/localstorage.dart';
 import '../../main/main_screen.dart';
@@ -107,7 +108,11 @@ class _BodyState extends State<Body> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: List.generate(
                                   splashData.length,
-                                  (index) => buildDots(index: index),
+                                  (index) => buildDots(
+                                    currentIndex: currentPage,
+                                    index: index,
+                                    color: kRedColor,
+                                  ),
                                 ),
                               ),
                               GestureDetector(
@@ -133,19 +138,6 @@ class _BodyState extends State<Body> {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  AnimatedContainer buildDots({int index}) {
-    return AnimatedContainer(
-      duration: kAnimationDuration,
-      margin: EdgeInsets.symmetric(horizontal: 5),
-      width: currentPage == index ? 20 : 10,
-      height: 6,
-      decoration: BoxDecoration(
-        color: currentPage == index ? kRedColor : kRedColor.withOpacity(0.3),
-        borderRadius: BorderRadius.circular(10),
       ),
     );
   }

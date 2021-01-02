@@ -6,10 +6,9 @@ import 'package:food/src/screens/main/main_screen.dart';
 import 'package:food/src/screens/splash/splash_screen.dart';
 import 'package:food/src/utils/routes.dart';
 import 'package:food/src/utils/theme.dart';
-import 'package:localstorage/localstorage.dart';
 import 'package:provider/provider.dart';
 import 'data/auth_data.dart';
-import 'data/banners_data.dart';
+
 
 class Glamor extends StatelessWidget {
   Glamor({this.token});
@@ -29,9 +28,6 @@ class Glamor extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           builder: (context) => Spinner(),
-        ),
-        ChangeNotifierProvider(
-          builder: (context) => BannersData(),
         ),
       ],
       child: MaterialApp(
