@@ -34,8 +34,8 @@ class _CategoriesState extends State<Categories> {
             child: Column(
               children: [
                 Container(
-                  width: getProportionateScreenWidth(46),
-                  height: getProportionateScreenHeight(58),
+                  width: getProportionateScreenWidth(50),
+                  height: getProportionateScreenWidth(50),
                   padding: EdgeInsets.all(8),
                   decoration: BoxDecoration(
                       gradient: LinearGradient(

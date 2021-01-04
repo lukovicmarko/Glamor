@@ -13,8 +13,8 @@ class HomePage extends StatelessWidget {
     return SafeArea(
       child: Padding(
         padding: EdgeInsets.all(getProportionateScreenWidth(15)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
+          //crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SearchBar(),
             SizedBox(height: getProportionateScreenHeight(15)),
@@ -33,9 +33,9 @@ class HomePage extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(
                           bottom: getProportionateScreenHeight(2)),
-                      child: SvgPicture.asset(
-                        "assets/icons/arrow-point-to-right.svg",
-                        width: 12,
+                      child: Icon(
+                        Icons.arrow_forward_ios,
+                        size: 15,
                         color: kRedColor,
                       ),
                     ),

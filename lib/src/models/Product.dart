@@ -8,8 +8,7 @@ class Product {
   final int countInStock;
   final List reviews;
   final int numReviews;
-  final String preparationTime;
-
+  final List colors;
   Product({
     this.id,
     this.name,
@@ -20,6 +19,6 @@ class Product {
     this.countInStock,
     this.reviews,
     this.numReviews,
-    this.preparationTime,
+    this.colors,
   });
 }

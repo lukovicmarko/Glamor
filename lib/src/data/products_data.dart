@@ -28,12 +28,12 @@ class ProductsData extends ChangeNotifier {
           name: product['name'],
           price: product['price'].toDouble(),
           rating: product['rating'].toDouble(),
-          // images: product['images'],
+          images: buildImagesList(product['image']),
           description: product['description'],
           countInStock: product['countInStock'],
           reviews: product['reviews'],
           numReviews: product['numReviews'],
-          preparationTime: product['preparationTime'],
+          colors: buildColorList(product['colors']),
         ),
       );
     });
@@ -51,22 +51,47 @@ class ProductsData extends ChangeNotifier {
     productsResponse.forEach((product) {
       _topProducts.add(
         Product(
-          id: product['id'],
+          id: product['_id'],
           name: product['name'],
           price: product['price'].toDouble(),
           rating: product['rating'].toDouble(),
-          images: product['image'],
+          images: buildImagesList(product['image']),
           description: product['description'],
           countInStock: product['countInStock'],
           reviews: product['reviews'],
           numReviews: product['numReviews'],
-          preparationTime: product['preparationTime'],
+          colors: buildColorList(product['colors']),
         ),
       );
     });
 
     notifyListeners();
   }
+
+  buildImagesList(images) {
+    List imagesList = [];
+    images.forEach((image) {
+      imagesList.add(image);
+    });
+    return imagesList;
+  }
+
+  buildColorList(colors) {
+    List colorList = [];
+    colors.forEach((color) {
+      colorList.add(color);
+    });
+    return colorList;
+  }
+
+  int _imageIndex = 0;
+
+  set imageIndex(index) {
+    _imageIndex = index;
+    notifyListeners();
+  }
+
+  get imageIndex => _imageIndex;
 
   get topProducts => _topProducts;
 }

@@ -17,17 +17,17 @@ class SocialButton extends StatelessWidget {
         child: FlatButton(
           onPressed: onPress,
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SvgPicture.asset(image, width: getProportionateScreenWidth(14)),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: getProportionateScreenWidth(15)),
-                child: Text(
-                  text,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: getProportionateScreenWidth(14),
-                  ),
+              SizedBox(
+                width: getProportionateScreenWidth(10),
+              ),
+              Text(
+                text,
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: getProportionateScreenWidth(14),
                 ),
               ),
             ],
