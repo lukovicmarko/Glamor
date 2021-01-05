@@ -9,7 +9,6 @@ import 'package:food/src/utils/theme.dart';
 import 'package:provider/provider.dart';
 import 'data/auth_data.dart';
 
-
 class Glamor extends StatelessWidget {
   Glamor({this.token});
   final String token;
@@ -31,7 +30,7 @@ class Glamor extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        title: 'ProShop',
+        title: 'Glamor',
         debugShowCheckedModeBanner: false,
         theme: theme(),
         initialRoute:

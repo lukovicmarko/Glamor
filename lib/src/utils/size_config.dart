@@ -28,3 +28,6 @@ double getProportionateScreenWidth(double inputWidth) {
   // 375 is the layout width that designer use
   return (inputWidth / screenWidth) * screenWidth;
 }
+
+//414
+//683
