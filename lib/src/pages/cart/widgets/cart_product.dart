@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food/src/data/cart_data.dart';
+import 'package:food/src/data/products_data.dart';
 import 'package:food/src/models/Product.dart';
 import 'package:food/src/screens/details/details_screen.dart';
 import 'package:food/src/utils/colors.dart';
@@ -12,6 +13,7 @@ class CartProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartData>(context);
+    var imageIndex = Provider.of<ProductsData>(context);
     return Dismissible(
       key: ValueKey(product.id),
       background: Container(
@@ -50,7 +52,7 @@ class CartProduct extends StatelessWidget {
                 );
               },
               child: Image.asset(
-                product.images[0][0],
+                product.images[imageIndex.imageIndex][0],
                 width: 100,
                 fit: BoxFit.fitHeight,
               ),

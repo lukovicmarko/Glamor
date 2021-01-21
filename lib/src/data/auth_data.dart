@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:food/src/models/User.dart';
 import 'package:food/src/modules/http.dart';
@@ -33,11 +35,13 @@ class AuthData extends ChangeNotifier {
         id: signInResponse["_id"],
         name: signInResponse["name"],
         email: signInResponse["email"],
+        image: signInResponse["image"],
       );
 
       _isLogged = true;
 
       //save to localstorage
+      saveUserToLocalStorage(_user);
       saveLocalStorage(signInResponse["token"]);
     } else {
       _message = signInResponse["message"];
@@ -60,9 +64,12 @@ class AuthData extends ChangeNotifier {
         id: googleResponse.id,
         name: googleResponse.displayName,
         email: googleResponse.email,
+        image: googleResponse.photoUrl,
       );
 
       //save to localstorage
+
+      saveUserToLocalStorage(_user);
 
       storage.setItem('token', accessToken);
 
@@ -96,6 +103,27 @@ class AuthData extends ChangeNotifier {
     final token = storage.getItem("token");
 
     return token;
+  }
+
+  void saveUserToLocalStorage(User user) {
+    final userInfo = json.encode({
+      'id': user.id,
+      'name': user.name,
+      'email': user.email,
+      'image': user.image,
+    });
+    storage.setItem('userInfo', userInfo);
+  }
+
+  void getUserFromLocalStorage() {
+    Map<String, dynamic> info = json.decode(storage.getItem('userInfo'));
+
+    _user = new User(
+      id: info['id'],
+      name: info['name'],
+      email: info['email'],
+      image: info['image'],
+    );
   }
 
   Future register(name, email, password) async {

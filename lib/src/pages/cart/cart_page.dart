@@ -8,6 +8,7 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartData>(context);
+
     return cart.cartCount > 0
         ? Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

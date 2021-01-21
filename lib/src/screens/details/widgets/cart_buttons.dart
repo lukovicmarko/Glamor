@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:food/src/data/cart_data.dart';
+import 'package:food/src/data/products_data.dart';
 import 'package:food/src/models/Product.dart';
 import 'package:food/src/provider/bottomNavigationProvider.dart';
 import 'package:food/src/utils/colors.dart';
 import 'package:food/src/utils/size_config.dart';
 import 'package:food/src/widgets/default_button.dart';
+import 'package:provider/provider.dart';
 
 class CartButtons extends StatelessWidget {
   CartButtons({
@@ -19,6 +21,7 @@ class CartButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //var imageIndex = Provider.of<ProductsData>(context);
     return Container(
       width: SizeConfig.screenWidth,
       padding: EdgeInsets.symmetric(horizontal: 10),

@@ -21,7 +21,12 @@ class CartData extends ChangeNotifier {
   }
 
   void incrementProductTotal(Product product) {
-    product.total++;
+    if (product.countInStock < product.total) {
+      return;
+    } else {
+      product.total++;
+    }
+
     notifyListeners();
   }
 

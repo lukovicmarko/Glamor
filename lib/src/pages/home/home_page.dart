@@ -14,7 +14,6 @@ class HomePage extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.all(3.75.w),
         child: ListView(
-          //crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SearchBar(),
             SizedBox(height: 2.2.h),
