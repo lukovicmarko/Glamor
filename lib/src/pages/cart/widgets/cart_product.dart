@@ -5,6 +5,7 @@ import 'package:food/src/models/Product.dart';
 import 'package:food/src/screens/details/details_screen.dart';
 import 'package:food/src/utils/colors.dart';
 import 'package:food/src/utils/constants.dart';
+import 'package:food/src/widgets/color_dots.dart';
 import 'package:provider/provider.dart';
 
 class CartProduct extends StatelessWidget {
@@ -66,6 +67,19 @@ class CartProduct extends StatelessWidget {
                   Text(
                     product.name,
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                  ),
+                  Row(
+                    children: [
+                      ...List.generate(
+                        product.colors.length,
+                        (index) => ColorDots(
+                          color: product.colors[index],
+                          index: index,
+                          width: 20,
+                          height: 20,
+                        ),
+                      ),
+                    ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

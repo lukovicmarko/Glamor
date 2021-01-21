@@ -10,8 +10,40 @@ class CartData extends ChangeNotifier {
 
   get cart => _cart;
 
+  /*pronalazi proizvod u kolekciji proizvoda po atributu ID*/
+  getProductInCartByID(productId, products) {
+    for (int i = 0; i < products.length; i++) {
+      if (products[i].id == productId) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+
+  /*pronalazi proizvod u kolekciji proizvoda po atributu ID*/
+  getProductByID(productId, products) {
+    for (int i = 0; i < products.length; i++) {
+      if (products[i].id == productId) {
+        return products[i];
+      }
+    }
+  }
+
   void addProductToCart(Product product) {
-    _cart.add(product);
+    final productInCartById = getProductInCartByID(product.id, _cart);
+    final productInCart = getProductByID(product.id, _cart);
+
+    if (productInCartById == true) {
+      if (productInCart.total > productInCart.countInStock) {
+        return;
+      } else {
+        productInCart.total++;
+      }
+    } else {
+      _cart.add(product);
+    }
+
     notifyListeners();
   }
 

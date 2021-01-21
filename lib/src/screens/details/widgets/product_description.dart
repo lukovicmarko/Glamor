@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food/src/models/Product.dart';
-import 'package:food/src/screens/details/widgets/color_dots.dart';
 import 'package:food/src/utils/size_config.dart';
+import 'package:food/src/widgets/color_dots.dart';
 
 class ProductDescription extends StatelessWidget {
   ProductDescription({this.product});
@@ -20,8 +20,12 @@ class ProductDescription extends StatelessWidget {
             children: [
               ...List.generate(
                 product.colors.length,
-                (index) =>
-                    ColorDots(color: product.colors[index], index: index),
+                (index) => ColorDots(
+                  color: product.colors[index],
+                  index: index,
+                  width: 35,
+                  height: 35,
+                ),
               ),
             ],
           ),

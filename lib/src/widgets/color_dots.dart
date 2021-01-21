@@ -5,9 +5,11 @@ import 'package:food/src/utils/size_config.dart';
 import 'package:provider/provider.dart';
 
 class ColorDots extends StatelessWidget {
-  ColorDots({this.color, this.index});
+  ColorDots({this.color, this.index, this.width, this.height});
   final String color;
   final int index;
+  final double width;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +20,8 @@ class ColorDots extends StatelessWidget {
         imageIndex.imageIndex = index;
       },
       child: Container(
-        width: getProportionateScreenWidth(35),
-        height: getProportionateScreenWidth(35),
+        width: width,
+        height: height,
         margin: EdgeInsets.only(right: 10),
         decoration: BoxDecoration(
           shape: BoxShape.circle,
