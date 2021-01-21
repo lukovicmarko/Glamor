@@ -56,6 +56,12 @@ class AuthData extends ChangeNotifier {
       final response = await googleResponse.authentication;
       final accessToken = response.accessToken;
 
+      _user = new User(
+        id: googleResponse.id,
+        name: googleResponse.displayName,
+        email: googleResponse.email,
+      );
+
       //save to localstorage
 
       storage.setItem('token', accessToken);

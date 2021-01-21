@@ -12,8 +12,6 @@ class SizeConfig {
     screenWidth = _mediaQueryData.size.width;
     screenHeight = _mediaQueryData.size.height;
     orientation = _mediaQueryData.orientation;
-
-    print(screenHeight);
   }
 }
 

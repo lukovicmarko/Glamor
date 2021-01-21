@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:food/src/models/Product.dart';
+import 'package:food/src/screens/details/widgets/favorite_button.dart';
 import 'package:food/src/utils/colors.dart';
 import 'package:food/src/utils/size_config.dart';
 
 class ProductName extends StatelessWidget {
   ProductName({@required this.product});
-
   final Product product;
 
   @override
@@ -34,10 +34,7 @@ class ProductName extends StatelessWidget {
                     ],
                   ),
                   SizedBox(width: getProportionateScreenWidth(20)),
-                  Icon(
-                    Icons.favorite_border,
-                    color: kRedColor,
-                  ),
+                  FavoriteButton(product: product),
                 ],
               ),
             ],
