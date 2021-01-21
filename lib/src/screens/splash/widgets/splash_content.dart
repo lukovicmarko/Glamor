@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food/src/utils/colors.dart';
-import 'package:food/src/utils/size_config.dart';
+import 'package:sizer/sizer.dart';
 
 class SplashContent extends StatelessWidget {
   SplashContent({this.title, this.subtitle, this.image});
@@ -14,26 +14,24 @@ class SplashContent extends StatelessWidget {
         Spacer(),
         Image.asset(
           image,
-          height: getProportionateScreenHeight(265),
-          width: getProportionateScreenWidth(235),
+          height: 39.0.h,
+          width: 58.7.w,
         ),
         Spacer(),
         Text(
           title,
           style: TextStyle(
             color: kBlackColor,
-            fontSize: getProportionateScreenWidth(22),
+            fontSize: 3.2.h,
             fontWeight: FontWeight.w700,
           ),
         ),
-        SizedBox(
-          height: 20.0,
-        ),
+        SizedBox(height: 3.0.h),
         Text(
           subtitle,
           style: TextStyle(
             color: kBlackColor,
-            fontSize: getProportionateScreenWidth(17),
+            fontSize: 2.5.h,
           ),
         ),
         Spacer(),

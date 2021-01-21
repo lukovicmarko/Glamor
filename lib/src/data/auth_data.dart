@@ -4,7 +4,6 @@ import 'package:food/src/modules/http.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'dart:convert';
 
 class AuthData extends ChangeNotifier {
   GoogleSignIn _googleSignIn = GoogleSignIn(

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:food/src/screens/sign_in/sign_in_screen.dart';
 import 'package:food/src/screens/splash/widgets/splash_content.dart';
 import 'package:food/src/utils/colors.dart';
-import 'package:food/src/utils/constants.dart';
 import 'package:food/src/utils/size_config.dart';
 import 'package:food/src/widgets/build_dots.dart';
 import 'package:food/src/widgets/default_button.dart';
 import 'package:localstorage/localstorage.dart';
 import '../../main/main_screen.dart';
+import 'package:sizer/sizer.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -85,11 +85,13 @@ class _BodyState extends State<Body> {
                 children: [
                   Padding(
                     padding: EdgeInsets.symmetric(
-                      horizontal: getProportionateScreenWidth(20),
+                      horizontal: 5.0.w,
                     ),
                     child: currentPage == 2
                         ? DefaultButton(
                             text: 'Get Started',
+                            color: kRedColor,
+                            textColor: kWhiteColor,
                             onPress: () {
                               Navigator.pushNamed(
                                   context, SignInScreen.routeName);

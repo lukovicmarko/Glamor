@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food/src/utils/colors.dart';
+import 'package:sizer/sizer.dart';
 
 ThemeData theme() {
   return ThemeData(
@@ -26,10 +27,10 @@ InputDecorationTheme inputDecorationTheme() {
 
 TextTheme textTheme() {
   return TextTheme(
-    bodyText1: TextStyle(color: kBlackColor, fontSize: 16.0),
-    bodyText2: TextStyle(color: kBlackColor, fontSize: 16.0),
-    headline1: TextStyle(color: kBlackColor, fontSize: 18.0),
-    headline6: TextStyle(color: kBlackColor, fontSize: 18.0),
+    bodyText1: TextStyle(color: kBlackColor, fontSize: 2.35.h),
+    bodyText2: TextStyle(color: kBlackColor, fontSize: 2.35.h),
+    headline1: TextStyle(color: kBlackColor, fontSize: 2.35.h),
+    headline6: TextStyle(color: kBlackColor, fontSize: 2.35.h),
   );
 }
 

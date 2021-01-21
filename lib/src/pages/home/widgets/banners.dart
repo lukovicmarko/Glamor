@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food/src/utils/colors.dart';
-import 'package:food/src/utils/size_config.dart';
+import 'package:sizer/sizer.dart';
 import 'package:food/src/widgets/build_dots.dart';
 
 class Banners extends StatefulWidget {
@@ -22,7 +22,7 @@ class _BannersState extends State<Banners> {
     return Stack(
       children: [
         Container(
-          height: getProportionateScreenWidth(150),
+          height: 22.0.h,
           child: PageView.builder(
             onPageChanged: (value) {
               setState(() {
@@ -31,7 +31,7 @@ class _BannersState extends State<Banners> {
             },
             itemCount: _banners.length,
             itemBuilder: (context, index) => SizedBox(
-              width: SizeConfig.screenWidth,
+              width: 100.0.w,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Image.asset(
@@ -43,8 +43,8 @@ class _BannersState extends State<Banners> {
           ),
         ),
         Positioned(
-          bottom: getProportionateScreenHeight(10),
-          left: SizeConfig.screenWidth * .5 - getProportionateScreenWidth(50),
+          bottom: 1.5.h,
+          left: 100.0.w * .5 - 12.5.w,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(

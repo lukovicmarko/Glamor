@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food/src/utils/colors.dart';
 import 'package:food/src/utils/size_config.dart';
+import 'package:sizer/sizer.dart';
 
 class SearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      style: TextStyle(
-        fontSize: getProportionateScreenWidth(15),
-      ),
+      style: TextStyle(fontSize: 2.2.h),
       decoration: InputDecoration(
         hintText: "Search Products",
         enabledBorder: OutlineInputBorder(
@@ -21,10 +20,10 @@ class SearchBar extends StatelessWidget {
           borderSide: BorderSide(color: kGreyColor, width: 1.0),
         ),
         prefixIcon: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+          padding: EdgeInsets.symmetric(horizontal: 5.0.w, vertical: 2.2.h),
           child: SvgPicture.asset(
             "assets/icons/loupe.svg",
-            width: getProportionateScreenWidth(15),
+            width: 3.75.w,
             color: kGreyColor,
           ),
         ),

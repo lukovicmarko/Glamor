@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food/src/utils/colors.dart';
-import 'package:food/src/utils/size_config.dart';
+import 'package:sizer/sizer.dart';
 
 class AuthLink extends StatelessWidget {
   AuthLink({this.text, this.linkText, this.onPress});
@@ -14,9 +14,12 @@ class AuthLink extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(text),
+        Text(
+          text,
+          style: TextStyle(fontSize: 2.2.h),
+        ),
         SizedBox(
-          width: getProportionateScreenWidth(5),
+          width: 1.25.w,
         ),
         GestureDetector(
           onTap: onPress,

@@ -9,6 +9,7 @@ class Product {
   final List reviews;
   final int numReviews;
   final List colors;
+  int total;
   Product({
     this.id,
     this.name,
@@ -20,5 +21,6 @@ class Product {
     this.reviews,
     this.numReviews,
     this.colors,
+    this.total,
   });
 }
