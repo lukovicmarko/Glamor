@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:food/src/utils/colors.dart';
+import 'package:sizer/sizer.dart';
 import 'package:food/src/utils/size_config.dart';
 
 class SocialButton extends StatelessWidget {
@@ -13,21 +13,19 @@ class SocialButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        height: getProportionateScreenHeight(50),
+        height: 7.35.h,
         child: FlatButton(
           onPressed: onPress,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset(image, width: getProportionateScreenWidth(14)),
-              SizedBox(
-                width: getProportionateScreenWidth(10),
-              ),
+              SvgPicture.asset(image, width: 3.5.w),
+              SizedBox(width: 2.5.w),
               Text(
                 text,
                 style: TextStyle(
                   fontWeight: FontWeight.w700,
-                  fontSize: getProportionateScreenWidth(14),
+                  fontSize: 2.0.h,
                 ),
               ),
             ],

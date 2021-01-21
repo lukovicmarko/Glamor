@@ -6,13 +6,13 @@ import 'package:food/src/provider/spinner.dart';
 import 'package:food/src/screens/sign_in/widgets/social_button.dart';
 import 'package:food/src/screens/sign_up/sign_up_screen.dart';
 import 'package:food/src/utils/colors.dart';
-import 'package:food/src/utils/size_config.dart';
 import 'package:food/src/widgets/auth_container.dart';
 import 'package:food/src/widgets/auth_link.dart';
 import 'package:food/src/widgets/default_button.dart';
 import 'package:food/src/widgets/form_error.dart';
 import 'package:provider/provider.dart';
 import '../../main/main_screen.dart';
+import 'package:sizer/sizer.dart';
 
 class SignForm extends StatefulWidget {
   @override
@@ -77,35 +77,33 @@ class _SignFormState extends State<SignForm> {
         key: _formKey,
         child: Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: getProportionateScreenWidth(15),
-              vertical: getProportionateScreenHeight(40)),
+            horizontal: 3.7.w,
+            vertical: 5.8.h,
+          ),
           child: Column(
             children: [
               buildEmailField(),
-              SizedBox(height: 20),
+              SizedBox(height: 2.9.h),
               buildPasswordField(),
-              SizedBox(height: 20),
+              SizedBox(height: 2.9.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text(
-                    'Forgot Password?',
-                    style: TextStyle(
-                      fontSize: getProportionateScreenHeight(15),
-                    ),
-                  ),
+                  Text('Forgot Password?'),
                 ],
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 1.5.h),
               FormError(errors: errors),
-              SizedBox(height: 25),
+              SizedBox(height: 3.6.h),
               DefaultButton(
                 text: "Sign In",
+                color: kRedColor,
+                textColor: kWhiteColor,
                 onPress: () {
                   signIn();
                 },
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 2.9.h),
               AuthLink(
                 text: "Don't have an account?",
                 linkText: "Sign Up",
@@ -113,9 +111,9 @@ class _SignFormState extends State<SignForm> {
                   Navigator.pushNamed(context, SignUpScreen.routeName);
                 },
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 1.5.h),
               Text('-OR-'),
-              SizedBox(height: 20),
+              SizedBox(height: 2.9.h),
               Row(
                 children: [
                   SocialButton(
@@ -123,7 +121,7 @@ class _SignFormState extends State<SignForm> {
                     image: "assets/icons/facebook.svg",
                     onPress: () {},
                   ),
-                  SizedBox(width: getProportionateScreenWidth(13)),
+                  SizedBox(width: 3.2.w),
                   SocialButton(
                     text: "Google",
                     image: "assets/icons/google.svg",
@@ -175,11 +173,10 @@ class _SignFormState extends State<SignForm> {
             });
           },
           child: Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: getProportionateScreenWidth(12)),
+            padding: EdgeInsets.symmetric(horizontal: 4.0.w),
             child: SvgPicture.asset(
               "assets/icons/eye.svg",
-              height: getProportionateScreenWidth(15),
+              height: 2.2.h,
             ),
           ),
         ),

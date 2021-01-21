@@ -1,28 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:food/src/utils/colors.dart';
-import 'package:food/src/utils/size_config.dart';
 
 class DefaultButton extends StatelessWidget {
-  DefaultButton({this.text, this.onPress});
+  DefaultButton({this.text, this.onPress, this.color, this.textColor});
 
   final String text;
   final Function onPress;
+  final Color color;
+  final Color textColor;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: getProportionateScreenHeight(56),
-      child: FlatButton(
-        color: kRedColor,
-        onPressed: onPress,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-        child: Text(
-          text,
-          style: TextStyle(
-            color: kWhiteColor,
-            fontWeight: FontWeight.w700,
-            fontSize: getProportionateScreenWidth(14),
+      child: Container(
+        height: 50,
+        child: FlatButton(
+          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          color: color,
+          onPressed: onPress,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
+            side: BorderSide(
+              color: kRedColor,
+              width: 2,
+              style: BorderStyle.solid,
+            ),
+          ),
+          child: Text(
+            text,
+            style: TextStyle(
+              color: textColor,
+              fontWeight: FontWeight.w700,
+              fontSize: 16,
+            ),
           ),
         ),
       ),

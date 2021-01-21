@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food/src/models/Product.dart';
 import 'package:food/src/screens/details/widgets/body.dart';
+import 'package:food/src/widgets/app_bar.dart';
 import 'package:food/src/widgets/rounded_icon_button.dart';
 
 class DetailsScreen extends StatelessWidget {
@@ -10,13 +11,7 @@ class DetailsScreen extends StatelessWidget {
     final ProductDetailsArguments agrs =
         ModalRoute.of(context).settings.arguments;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        leading: RoundedIconButton(
-          iconData: Icons.arrow_back_ios,
-          onPress: () => Navigator.pop(context),
-        ),
-      ),
+      appBar: buildAppBar(context),
       body: Body(product: agrs.product),
     );
   }
