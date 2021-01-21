@@ -15,6 +15,11 @@ class CartData extends ChangeNotifier {
     notifyListeners();
   }
 
+  void removeFromCart(Product product) {
+    _cart.remove(product);
+    notifyListeners();
+  }
+
   void incrementProductTotal(Product product) {
     product.total++;
     notifyListeners();
@@ -27,5 +32,13 @@ class CartData extends ChangeNotifier {
       product.total--;
     }
     notifyListeners();
+  }
+
+  double getTotalAmount(cart) {
+    double totalAmount = 0.0;
+    cart.forEach((item) {
+      totalAmount += item.total * item.price;
+    });
+    return totalAmount;
   }
 }
