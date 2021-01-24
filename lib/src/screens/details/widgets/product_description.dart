@@ -21,6 +21,7 @@ class ProductDescription extends StatelessWidget {
               ...List.generate(
                 product.colors.length,
                 (index) => ColorDots(
+                  product: product,
                   color: product.colors[index],
                   index: index,
                   width: 35,

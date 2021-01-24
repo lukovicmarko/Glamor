@@ -3,7 +3,6 @@ import 'package:food/src/provider/bottomNavigationProvider.dart';
 import 'package:food/src/screens/main/widgets/body.dart';
 import 'package:food/src/screens/main/widgets/bottom_navigation.dart';
 import 'package:food/src/utils/size_config.dart';
-import 'package:food/src/widgets/app_bar.dart';
 import 'package:provider/provider.dart';
 
 class MainScreen extends StatelessWidget {

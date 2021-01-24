@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food/src/data/cart_data.dart';
 import 'package:food/src/data/products_data.dart';
 import 'package:food/src/models/Product.dart';
+import 'package:food/src/pages/cart/widgets/color_dot.dart';
 import 'package:food/src/screens/details/details_screen.dart';
 import 'package:food/src/utils/colors.dart';
 import 'package:food/src/utils/constants.dart';
@@ -14,7 +15,6 @@ class CartProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartData>(context);
-    var imageIndex = Provider.of<ProductsData>(context);
     return Dismissible(
       key: ValueKey(product.id),
       background: Container(
@@ -53,7 +53,7 @@ class CartProduct extends StatelessWidget {
                 );
               },
               child: Image.asset(
-                product.images[imageIndex.imageIndex][0],
+                product.images[product.colorIndex][0],
                 width: 100,
                 fit: BoxFit.fitHeight,
               ),
@@ -70,14 +70,9 @@ class CartProduct extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      ...List.generate(
-                        product.colors.length,
-                        (index) => ColorDots(
-                          color: product.colors[index],
-                          index: index,
-                          width: 20,
-                          height: 20,
-                        ),
+                      Text('Color: '),
+                      ColorDot(
+                        color: product.colors[product.colorIndex],
                       ),
                     ],
                   ),

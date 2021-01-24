@@ -63,6 +63,7 @@ class ProductsData extends ChangeNotifier {
           numReviews: product['numReviews'],
           colors: buildColorList(product['colors']),
           total: 1,
+          colorIndex: 0,
         ),
       );
     });
