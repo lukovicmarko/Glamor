@@ -71,6 +71,36 @@ class ProductsData extends ChangeNotifier {
     notifyListeners();
   }
 
+  get topProducts => _topProducts;
+
+  Future searchProducts(String keyword) async {
+    RequestResult requestResult = RequestResult(
+        'https://lukovicmarko-glamor.herokuapp.com/api/products?keyword=$keyword');
+    var searchResponse = await requestResult.getData();
+
+    _topProducts.clear();
+
+    searchResponse["products"].forEach((product) {
+      _topProducts.add(
+        Product(
+          id: product['_id'],
+          name: product['name'],
+          price: product['price'].toDouble(),
+          rating: product['rating'].toDouble(),
+          images: buildImagesList(product['image']),
+          description: product['description'],
+          countInStock: product['countInStock'],
+          reviews: product['reviews'],
+          numReviews: product['numReviews'],
+          colors: buildColorList(product['colors']),
+          total: 1,
+          colorIndex: 0,
+        ),
+      );
+    });    
+    notifyListeners();
+  }
+
   buildImagesList(images) {
     List imagesList = [];
     images.forEach((image) {
@@ -95,6 +125,4 @@ class ProductsData extends ChangeNotifier {
   }
 
   get imageIndex => _imageIndex;
-
-  get topProducts => _topProducts;
 }

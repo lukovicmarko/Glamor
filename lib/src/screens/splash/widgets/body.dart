@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:food/src/screens/sign_in/sign_in_screen.dart';
 import 'package:food/src/screens/splash/widgets/splash_content.dart';
 import 'package:food/src/utils/colors.dart';
-import 'package:food/src/utils/size_config.dart';
 import 'package:food/src/widgets/build_dots.dart';
 import 'package:food/src/widgets/default_button.dart';
 import 'package:localstorage/localstorage.dart';

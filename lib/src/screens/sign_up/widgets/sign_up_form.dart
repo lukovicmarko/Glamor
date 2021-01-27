@@ -1,15 +1,22 @@
+import 'dart:convert';
+import 'dart:io';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:food/src/data/auth_data.dart';
 import 'package:food/src/provider/bottomNavigationProvider.dart';
 import 'package:food/src/provider/spinner.dart';
 import 'package:food/src/screens/main/main_screen.dart';
 import 'package:food/src/screens/sign_in/sign_in_screen.dart';
+import 'package:food/src/utils/colors.dart';
 import 'package:food/src/utils/size_config.dart';
 import 'package:food/src/widgets/auth_container.dart';
 import 'package:food/src/widgets/auth_link.dart';
 import 'package:food/src/widgets/default_button.dart';
 import 'package:food/src/widgets/form_error.dart';
 import 'package:provider/provider.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart' as path;
+import 'package:path_provider/path_provider.dart' as syspaths;
 
 class SignUpForm extends StatefulWidget {
   @override
@@ -17,6 +24,10 @@ class SignUpForm extends StatefulWidget {
 }
 
 class _SignUpFormState extends State<SignUpForm> {
+  File image;
+  var imageFile;
+
+  final picker = ImagePicker();
   final authData = new AuthData();
   final _formKey = GlobalKey<FormState>();
 
@@ -40,12 +51,27 @@ class _SignUpFormState extends State<SignUpForm> {
       });
   }
 
-  signUp() async {
+  // Future getImage() async {
+  //   final pickedFile = await picker.getImage(source: ImageSource.camera);
+
+  //   setState(() {
+  //     if (pickedFile != null) {
+  //       image = File(pickedFile.path);
+  //       final fileName = path.basename(image.path);
+  //       print(fileName);
+  //       imageFile = fileName;
+  //     } else {
+  //       print('No image selected.');
+  //     }
+  //   });
+  // }
+
+  signUp() {
     final spinner = Provider.of<Spinner>(context);
     final navigation = Provider.of<BottomNavigationBarProvider>(context);
     spinner.isActiveSpiner();
 
-    await authData.register(name, email, password);
+    authData.register(name, email, password, imageFile);
 
     if (authData.isLogged) {
       Navigator.pushNamed(context, MainScreen.routeName);
@@ -78,6 +104,8 @@ class _SignUpFormState extends State<SignUpForm> {
               FormError(errors: errors),
               SizedBox(height: 25),
               DefaultButton(
+                color: kRedColor,
+                textColor: kWhiteColor,
                 text: "Sign Up",
                 onPress: () {
                   signUp();

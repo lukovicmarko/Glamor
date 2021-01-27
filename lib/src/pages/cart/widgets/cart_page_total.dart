@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food/src/data/cart_data.dart';
+import 'package:food/src/pages/cart/widgets/checkout.dart';
 import 'package:food/src/utils/colors.dart';
 import 'package:food/src/utils/size_config.dart';
 import 'package:food/src/widgets/default_button.dart';
@@ -40,7 +41,17 @@ class CartPageTotal extends StatelessWidget {
               textColor: kWhiteColor,
               color: kRedColor,
               text: 'Checkout',
-              onPress: () {},
+              onPress: () {
+                showModalBottomSheet(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(25.0),
+                    ),
+                  ),
+                  context: context,
+                  builder: (context) => Checkout(),
+                );
+              },
             ),
           )
         ],

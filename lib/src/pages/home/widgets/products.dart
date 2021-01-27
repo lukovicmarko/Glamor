@@ -19,6 +19,8 @@ class Products extends StatelessWidget {
               product: products.topProducts[index],
               onPress: () {
                 products.imageIndex = 0;
+                products.topProducts[index].colorIndex = 0;
+                products.topProducts[index].total = 1;
                 Navigator.pushNamed(
                   context,
                   DetailsScreen.routeName,

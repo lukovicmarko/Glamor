@@ -35,7 +35,9 @@ class AuthData extends ChangeNotifier {
         id: signInResponse["_id"],
         name: signInResponse["name"],
         email: signInResponse["email"],
-        image: signInResponse["image"],
+        image: signInResponse["image"] == null
+            ? "assets/images/user.png"
+            : signInResponse["image"],
       );
 
       _isLogged = true;
@@ -126,7 +128,7 @@ class AuthData extends ChangeNotifier {
     );
   }
 
-  Future register(name, email, password) async {
+  Future register(name, email, password, imageFile) async {
     RequestResult requestResult =
         RequestResult('https://lukovicmarko-glamor.herokuapp.com/api/users');
 

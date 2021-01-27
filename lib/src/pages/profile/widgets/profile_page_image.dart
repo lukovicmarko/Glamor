@@ -27,7 +27,9 @@ class _ProfilePageImageState extends State<ProfilePageImage> {
           children: [
             CircleAvatar(
               radius: 50.0,
-              backgroundImage: NetworkImage(authData.user.image),
+              backgroundImage: authData.user.image.contains('https')
+                  ? NetworkImage(authData.user.image)
+                  : AssetImage(authData.user.image),
             ),
             SizedBox(width: 20),
             Text(
